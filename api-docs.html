@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="theme-color" content="">
+
+        <meta property="og:title" content="Axolotl API">
+        <meta property="og:description" content="">
+        <meta property="og:image" content="">
+        <meta property="og:image:alt" content="Axolotl API icon">
+        <meta property="og:site_name" content="Axolotl API">
+        <meta property="og:url" content="">
+
+        <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
+        <link rel="fluid-icon" href="/favicon.ico" title="Axolotl API">
+        <link rel="canonical" href="">
+
+        <title>AxolotlAPI.Dev</title>
+
+        <link rel="stylesheet" href="/css/main.css">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" media="screen,projection">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
+    </head>
+    <body class="teal darken-3">
+        <header>
+            <nav>
+                <div class="nav-wrapper teal">
+                    <ul class="left">
+                        <li><a href="/">Homepage</a></li>
+                        <li class="active"><a href="/api-docs.html">API documentation</a></li>
+                    </ul>
+
+                    <ul class="right">
+                        <li><a href="https://github.com/AceKiron-Community/axolotlapi" rel="nofollow"><i class="fab fa-github"></i></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <div class="container">
+                <div class="row" id="slash-reddit">
+                    <div class="col m12">
+                        <div class="card teal darken-4">
+                            <div class="card-content white-text">
+                                <span class="card-title">/reddit</span>
+                                <p>The API fetches over 100 posts from <a href="https://reddit.com/r/axolotls" rel="nofollow">r/axolotls</a> and sends back a number of those based on filters provided.</p>
+
+                                <hr>
+
+                                <p>Params:</p>
+                                <table id="params-slash-reddit">
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Possible values</th>
+                                    <th>Default value</th>
+
+                                    <!-- Set -->
+                                    <tr>
+                                        <td>set</td>
+                                        <td>What set to pick the post from.</td>
+                                        <td>
+                                            <ul class="browser-default">
+                                                <li>new</li>
+                                                <li>hot</li>
+                                                <li>rising</li>
+                                                <li>any</li>
+                                            </ul>
+                                        </td>
+                                        <td>any</td>
+                                    </tr>
+
+                                    <!-- Min -->
+                                    <tr>
+                                        <td>minScore</td>
+                                        <td>What the lowest possible score should be.</td>
+                                        <td>Any number ranging from -Infinity to Infinity.</td>
+                                        <td>-Infinity</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>minMedia</td>
+                                        <td>How many pictures or videos the post should have at least.</td>
+                                        <td>Any number ranging from 0 to Infinity.</td>
+                                        <td>0</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>minAwards</td>
+                                        <td>How many awards the post should have at least.</td>
+                                        <td>Any number ranging from 0 to Infinity.</td>
+                                        <td>0</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>minComments</td>
+                                        <td>How many comments the post should have at least.</td>
+                                        <td>Any number ranging from 0 to Infinity.</td>
+                                        <td>0</td>
+                                    </tr>
+
+                                    <!-- Max -->
+                                    <tr>
+                                        <td>maxScore</td>
+                                        <td>What the highest possible score should be.</td>
+                                        <td>Any number ranging from -Infinity to Infinity.</td>
+                                        <td>Infinity</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>maxMedia</td>
+                                        <td>How many pictures or videos the post should have at most.</td>
+                                        <td>Any number ranging from 0 to Infinity.</td>
+                                        <td>Infinity</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>maxAwards</td>
+                                        <td>How many awards the post should have at most.</td>
+                                        <td>Any number ranging from 0 to Infinity.</td>
+                                        <td>Infinity</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>maxComments</td>
+                                        <td>How many comments the post should have at most.</td>
+                                        <td>Any number ranging from 0 to Infinity.</td>
+                                        <td>Infinity</td>
+                                    </tr>
+
+                                    <!-- Author and flair -->
+                                    <tr>
+                                        <td>author</td>
+                                        <td>Who the author must be.</td>
+                                        <td>Any string, if this parameter isn't specified it won't be filtered.</td>
+                                        <td></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>flair</td>
+                                        <td>What the author must be.</td>
+                                        <td>Any string, if this parameter isn't specified it won't be filtered.</td>
+                                        <td></td>
+                                    </tr>
+
+                                    <!-- NSFW, spoiler, archived, is_crosspostable, pinned, and locked -->
+                                    <tr>
+                                        <td>nsfw</td>
+                                        <td>If NSFW posts should be allowed or not.</td>
+                                        <td><a href="#ref-1">#ref-1</a></td>
+                                        <td>0</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>spoiler</td>
+                                        <td>If posts marked as spoiler should be allowed or not.</td>
+                                        <td><a href="#ref-1">#ref-1</a></td>
+                                        <td>0</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>archived</td>
+                                        <td>If posts marked as archived should be allowed or not.</td>
+                                        <td><a href="#ref-1">#ref-1</a></td>
+                                        <td>1</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>is_crosspostable</td>
+                                        <td>If posts marked as crosspostable should be allowed or not.</td>
+                                        <td><a href="#ref-1">#ref-1</a></td>
+                                        <td>1</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>pinned</td>
+                                        <td>If pinned posts should be allowed or not.</td>
+                                        <td><a href="#ref-1">#ref-1</a></td>
+                                        <td>1</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>locked</td>
+                                        <td>If locked posts should be allowed or not.</td>
+                                        <td><a href="#ref-1">#ref-1</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="card-action">
+                                <a href="https://AxolotlAPI-test.kirondevcoder.repl.co/reddit?minMedia=1&flair=Just%20Showing%20Off%20😍">Example</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" id="slash-reddit-slash-getflairs">
+                    <div class="col m12">
+                        <div class="card teal darken-4">
+                            <div class="card-content white-text">
+                                <span class="card-title">/reddit/getflairs</span>
+                                <p>The API fetches over 100 posts from <a href="https://reddit.com/r/axolotls" rel="nofollow">r/axolotls</a>. These posts have flairs, each flair is logged and can be fetched with this route.</p>
+
+                                <hr>
+
+                                <p>Params:</p>
+                                There are no parameters for this route! :D
+                            </div>
+                            <div class="card-action">
+                                <a href="https://AxolotlAPI-test.kirondevcoder.repl.co/reddit/getflairs">Example</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" id="slash-reddit-slash-getcount">
+                    <div class="col m12">
+                        <div class="card teal darken-4">
+                            <div class="card-content white-text">
+                                <span class="card-title">/reddit/getcount</span>
+                                <p>The API fetches over 100 posts from <a href="https://reddit.com/r/axolotls" rel="nofollow">r/axolotls</a>. These posts can be filtered and then counted with this route.</p>
+
+                                <hr>
+
+                                <p>Params:</p>
+                                This route uses the exact same parameters as <a href="#slash-reddit">/reddit</a>.
+                            </div>
+                            <div class="card-action">
+                                <a href="https://AxolotlAPI-test.kirondevcoder.repl.co/reddit/getcount?minMedia=1&minScore=5">Example</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" id="slash-reddit-slash-fromid">
+                    <div class="col m12">
+                        <div class="card teal darken-4">
+                            <div class="card-content white-text">
+                                <span class="card-title">/reddit/fromid</span>
+                                <p>Once you know the ID of a post, you can fetch information about it with this route.</p>
+
+                                <hr>
+
+                                <p>Params:</p>
+                                <table>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Possible values</th>
+                                    <th>Default value</th>
+
+                                    <tr>
+                                        <td>id</td>
+                                        <td>The ID of a Reddit post.</td>
+                                        <td>Any string.</td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="/js/main.js"></script>
+    </body>
+</html>
